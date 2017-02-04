@@ -1,2 +1,2 @@
-# DS1004
-For labs
+# DSGA-1004 – Big Data
+Lab files. 
