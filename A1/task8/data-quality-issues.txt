@@ -1,0 +1,3 @@
+1. For task 6, there are some violations that cannot be verified, leaving plate_id and registration_state unknown. 
+2. For task 2, there are some violation types not defined in the violation codes file, such as 1 and 30.
+3. For task 1, we can find some violations listed in the open violations but not in the parking violations, such as plate_id 1129859022.  
