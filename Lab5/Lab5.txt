@@ -1,16 +1,12 @@
-Zemin Yu (zy937):
 Problem: Cannot figure out the correct way to read in the data at first. Have tried to split the data by comma, but failed to pass the test.  
 Solution: Debug locally to print the output of map result. Find out that some data already contain comma, so that the original split method is not feasible. After consulting StackOverflow, end up using csv.reader to solve the problem. 
 
-Weitao Lin (wl1599):
 Problem: Have trouble making the mapper identify which csv is being read for task1.
 Solution: Firstly by looking into the contents of two datasets, I try to construct some if conditions on the number of columns. However this cannot work very well because there are some strange symbols that cause some rows having extra columns. By understanding the hint given in the instruction and solutions posted on StackOverflow, I change the previous if statement into if "parking" in os.environ.get("mapreduce_map_input_file"), and use csv.reader to read input file. This address the problem.
 
-Xiaoyu Wang (xw1435):
 For some data entries, they're shifted one column to the right, thus bringing troubles when read in by specifying positions. Checked the test result and manually added if statements in mapper to avoid read-in errors. 
 Also some plate_ids contain commas, therefore splitting by commas caused fragmentation of that entry. Used if statement to check the next component and whether it has the specified length. If so, printed this piece instead.
 
-Xinsheng Zhang (xz1757):
 I faced bugs caused by extra space, blank line and indentation.
 For the error of extra space, when I ran Hadoop work in the dumbo, I copied and pasted code from text editor with one extra space at the end of code by mistake, and the job failed. I searched online and found that terminal command line is sensitive to the extra space. I fixed it by re-typing it after multiple failures.
 At the beginning of every script, we should specify that we are using python to compile the code, such as ¡°#!/usr/bin/env python¡±. However, I did not put this line of code at the beginning of the script. The script didn¡¯t work until I found this mistake from StackOverflow.
