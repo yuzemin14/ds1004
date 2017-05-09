@@ -1,0 +1,46 @@
+Here are instructions for running the example parallel MPI program on HPC's Prince machine
+
+Open a terminal (or putty) and ssh to hpc.nyu.edu
+
+Once logged in to hpc.nyu.edu, type:
+ssh prince
+
+Type: 
+bash
+
+Get the tar file with the example:
+wget https://s3.amazonaws.com/1004bigdata2017/innerprodex.tar
+
+
+Unpack the tar file:
+tar xvf innerprodex.tar 
+
+
+To start an interactive batch session on prince, type:
+srun -n10 -t1:00:00 --mem=1000 --pty /bin/bash
+
+To load the intel compilers we need, type:
+module load openmpi/intel
+
+To compile the sequential code, type:
+icc -O3 inner.c -o inner
+
+To compile the MPI code, type:
+mpicc -O3 inner-mpi.c -o inner-mpi
+
+To run the sequential program with n=1260000 and 100 passes, type:
+./inner 1260000 100
+
+To run the MPI program with n=1260000 and 100 passes, using various numbers of parallel tasks, type, e.g.,:
+mpirun -np 1 ./inner-mpi 1260000 100
+mpirun -np 2 ./inner-mpi 1260000 100
+mpirun -np 3 ./inner-mpi 1260000 100
+mpirun -np 4 ./inner-mpi 1260000 100
+mpirun -np 5 ./inner-mpi 1260000 100
+mpirun -np 6 ./inner-mpi 1260000 100
+mpirun -np 7 ./inner-mpi 1260000 100
+mpirun -np 8 ./inner-mpi 1260000 100
+mpirun -np 9 ./inner-mpi 1260000 100
+mpirun -np 10 ./inner-mpi 1260000 100
+
+(Note: For simplicity, in our example n must be divisible by np)
